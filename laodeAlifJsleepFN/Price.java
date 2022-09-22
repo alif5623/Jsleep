@@ -11,27 +11,28 @@ public class Price
 {
     // instance variables - replace the example below with your own
     public double price;
-    public int discount;
-    public double rebate;
-    /**
-     * Constructor for objects of class Price
-     */
+ //   public int discount;
+    public double discount;
+  //  public double rebate;
+
     public Price(double price){
         this.price = price;
         this.discount = 0;
-        this.rebate = 0;
+     //   this.rebate = 0;
     }
+    /*
     public Price(double price, int discount)
     {
         this.price = price;
         this.discount = discount;
         this.rebate = 0;
-    }
+    }*/
     public Price(double price, double rebate){
         this.price = price;
-        this.rebate = discount;
+     //   this.rebate = discount;
         this.discount = 0;
     }
+    /*
     private double getDiscountedPrice(){
         if (discount > 100.0){
             return 100;
@@ -49,6 +50,6 @@ public class Price
         }
     }
 
-
+    */
 
 }
