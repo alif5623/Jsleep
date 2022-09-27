@@ -1,14 +1,26 @@
 package laodeAlifJsleepFN;
 
 
-public class Voucher
+public class Voucher extends Serializable
 {
     public Type type;
     public double cut;
     public String name;
     public int code;
     public double minimum;
-    public boolean used;
+    private boolean used;
+
+    public Voucher(int id, String name, int code, Type type, boolean used, double minimum, double cut){
+        super(id);
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.type = type;
+        this.used = used;
+        this.minimum = minimum;
+        this.cut = cut;
+    }
+    /*
 
     public Voucher(String name, int code, Type type, double minimum, double cut)
     {
@@ -49,5 +61,5 @@ public class Voucher
             return 0;
         }
     }
-
+*/
 }
