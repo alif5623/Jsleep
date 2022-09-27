@@ -30,7 +30,7 @@ public class Voucher extends Serializable
        this.minimum = minimum;
        this.cut = cut;
     }
-
+    */
     public boolean isUsed(){
         return this.used;
     }
@@ -61,5 +61,4 @@ public class Voucher extends Serializable
             return 0;
         }
     }
-*/
 }

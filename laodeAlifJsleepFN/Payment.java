@@ -7,7 +7,7 @@ public class Payment extends Invoice
 
     public String to;
     public String from;
-    public int roomId;
+    private int roomId;
 
     public Payment(int id, int buyerId, int renterId, String time, int roomId, String from, String to)
     {
