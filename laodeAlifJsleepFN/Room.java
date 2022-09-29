@@ -40,10 +40,11 @@ public class Room extends Serializable
         this.facility = facility;
         this.city = city;
         this.address = address;
+        this.bedType = BedType.SINGLE;
     }
 
     public String toString(){
-        return "\nID: " + this.id + "\nName: " + this.name + "\nSize: " + this.size + "\nPrice: " + this.price +
+        return "\nName: " + this.name + "\nSize: " + this.size + this.price +
                 "\nFacility: " + this.facility + "\nCity: " + this.city + "\nAddress: " + this.address;
     }
 }
