@@ -32,6 +32,10 @@ public class Price
      //   this.rebate = discount;
         this.discount = 0;
     }
+
+    public String toString(){
+        return "\nPrice: " + this.price + "\nDiscount: " + this.discount;
+    }
     /*
     private double getDiscountedPrice(){
         if (discount > 100.0){

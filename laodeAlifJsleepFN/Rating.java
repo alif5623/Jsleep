@@ -10,13 +10,9 @@ package laodeAlifJsleepFN;
 public class Rating
 {
     // instance variables - replace the example below with your own
-    private int x;
     private long count;
     private long total;
 
-    /**
-     * Constructor for objects of class Rating
-     */
     public Rating()
     {
         this.total = 0;
@@ -42,15 +38,8 @@ public class Rating
         return this.total;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public String toString(){
+        return "\nTotal: " + this.total + "\nCount: " + this.count;
     }
+
 }
