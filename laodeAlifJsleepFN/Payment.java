@@ -9,7 +9,7 @@ public class Payment extends Invoice
     public Calendar to;
     public Calendar from;
     private int roomId;
-    SimpleDateFormat SDFormat = new SimpleDateFormat("dd MMMM yyyy");
+    SimpleDateFormat SDFormat = new SimpleDateFormat("dd/MM/yyyy");
     public Payment(int id, int buyerId, int renterId, int roomId)
     {
         super(id, buyerId, renterId);
@@ -46,11 +46,11 @@ public class Payment extends Invoice
     }
 
     public String getDuration(){
-        return SDFormat(this.from.getTime() + "-" + this.to.getTime()) ;
+        return SDFormat.format(this.from.getTime() + "-" + this.to.getTime()) ;
     }
 
     public String getTime(){
-        return SDFormat(this.from.getTime());
+        return SDFormat.format(this.from.getTime());
     }
 
 }
