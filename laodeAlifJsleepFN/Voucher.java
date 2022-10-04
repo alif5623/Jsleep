@@ -1,7 +1,7 @@
 package laodeAlifJsleepFN;
 
 
-public class Voucher extends Serializable
+public class Voucher extends Serializable implements FileParser
 {
     public Type type;
     public double cut;
@@ -60,5 +60,12 @@ public class Voucher extends Serializable
             System.out.println("Type invalid!");
             return 0;
         }
+    }
+
+    public Object write(){
+        return null;
+    }
+    public Boolean read(String a){
+        return true;
     }
 }

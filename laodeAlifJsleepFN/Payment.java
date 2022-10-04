@@ -1,36 +1,40 @@
 package laodeAlifJsleepFN;
 
-
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Payment extends Invoice
 {
 
-    public String to;
-    public String from;
+    public Calendar to;
+    public Calendar from;
     private int roomId;
-
-    public Payment(int id, int buyerId, int renterId, String time, int roomId, String from, String to)
+    SimpleDateFormat SDFormat = new SimpleDateFormat("dd MMMM yyyy");
+    public Payment(int id, int buyerId, int renterId, int roomId)
     {
-        super(id, buyerId, renterId, time);
+        super(id, buyerId, renterId);
         this.id = id;
         this.buyerId = buyerId;
         this.renterId = renterId;
-        this.time = time;
+        //this.time = time
         this.roomId = roomId;
-        this.from = from;
-        this.to = to;
+        this.from = Calendar.getInstance();
+        this.to = Calendar.getInstance();
+        this.from.getTime();
+        this.to.add(Calendar.DATE, 2);
+
     }
 
-    public Payment(int id, Account buyer, Renter renter, String time, int roomId, String from, String to)
+    public Payment(int id, Account buyer, Renter renter, String time, int roomId)
     {
-        super(id, buyer.id, renter.id, time);
+        super(id, buyer.id, renter.id);
         this.id = id;
         this.buyerId = buyer.id;
         this.renterId = renter.id;
-        this.time = time;
-        this.roomId = roomId;
-        this.from = from;
-        this.to = to;
+        this.from = Calendar.getInstance();
+        this.to = Calendar.getInstance();
+        this.from.getTime();
+        this.to.add(Calendar.DATE, 2);
     }
 
     public String print(){
@@ -39,6 +43,14 @@ public class Payment extends Invoice
     }
     public int getRoomId(){
         return this.roomId;
+    }
+
+    public String getDuration(){
+        return SDFormat(this.from.getTime() + "-" + this.to.getTime()) ;
+    }
+
+    public String getTime(){
+        return SDFormat(this.from.getTime());
     }
 
 }

@@ -7,7 +7,7 @@ package laodeAlifJsleepFN;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Room extends Serializable
+public class Room extends Serializable implements FileParser
 {
 
     public int size;
@@ -46,5 +46,11 @@ public class Room extends Serializable
     public String toString(){
         return "\nName: " + this.name + "\nSize: " + this.size + this.price +
                 "\nFacility: " + this.facility + "\nCity: " + this.city + "\nAddress: " + this.address;
+    }
+    public Object write(){
+        return null;
+    }
+    public Boolean read(String a){
+        return true;
     }
 }
