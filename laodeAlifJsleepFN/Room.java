@@ -1,6 +1,7 @@
 package laodeAlifJsleepFN;
 
-
+import java.util.Date;
+import java.util.ArrayList;
 /**
  * Write a description of class Room here.
  *
@@ -17,6 +18,7 @@ public class Room extends Serializable implements FileParser
     public BedType bedType;
     public City city;
     public String address;
+    public ArrayList <Date> booked = new ArrayList <Date>();
 
     /*
      * Constructor for objects of class Room

@@ -6,4 +6,8 @@ comment1.target=Room(int,\ java.lang.String,\ int,\ Price,\ Facility,\ City,\ ja
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Room\r\n\r\n\ \ \ \ public\ Room(String\ name,\ int\ size,\ Price\ price,\ Facility\ facility)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ this.name\ \=\ name;\r\n\ \ \ \ \ \ \ \ this.size\ \=\ size;\r\n\ \ \ \ \ \ \ \ this.price\ \=\ price;\r\n\ \ \ \ \ \ \ \ this.facility\ \=\ facility;\r\n\r\n\ \ \ \ }\r\n\r\n
 comment2.params=
 comment2.target=java.lang.String\ toString()
-numComments=3
+comment3.params=
+comment3.target=java.lang.Object\ write()
+comment4.params=a
+comment4.target=java.lang.Boolean\ read(java.lang.String)
+numComments=5

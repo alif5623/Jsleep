@@ -2,6 +2,7 @@ package laodeAlifJsleepFN;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Write a description of class Invoice here.
@@ -13,7 +14,7 @@ public class Invoice extends Serializable
 {
     public int buyerId;
     public int renterId;
-    public Calendar time;
+    public Date time;
     public PaymentStatus status;
     public RoomRating rating;
     SimpleDateFormat SDFormat = new SimpleDateFormat(" 'Formatted Date: ' MM/dd/yyyy");
@@ -29,8 +30,7 @@ public class Invoice extends Serializable
         this.id = id;
         this.buyerId = buyerId;
         this.renterId = renterId;
-        this.time = Calendar.getInstance();
-        this.time.getTime();
+        this.time = new Date();
         this.rating = RoomRating.NONE;
         this.status = PaymentStatus.WAITING;
     }
@@ -39,8 +39,7 @@ public class Invoice extends Serializable
         this.id = id;
         this.buyerId = buyer.id;
         this.renterId = renter.id;
-        this.time = Calendar.getInstance();
-        this.time.getTime();
+        this.time = new Date();
         this.rating = RoomRating.NONE;
         this.status = PaymentStatus.WAITING;
     }

@@ -1,15 +1,18 @@
 #BlueJ class context
 comment0.target=Payment
-comment1.params=id\ buyerId\ renterId\ roomId
-comment1.target=Payment(int,\ int,\ int,\ int)
-comment2.params=id\ buyer\ renter\ time\ roomId
-comment2.target=Payment(int,\ Account,\ Renter,\ java.lang.String,\ int)
+comment1.params=id\ buyerId\ renterId\ roomId\ from\ to
+comment1.target=Payment(int,\ int,\ int,\ int,\ java.util.Date,\ java.util.Date)
+comment2.params=id\ buyer\ renter\ time\ roomId\ from\ to
+comment2.target=Payment(int,\ Account,\ Renter,\ java.lang.String,\ int,\ java.util.Date,\ java.util.Date)
 comment3.params=
 comment3.target=java.lang.String\ print()
 comment4.params=
 comment4.target=int\ getRoomId()
-comment5.params=
-comment5.target=java.lang.String\ getDuration()
+comment5.params=from\ to\ room
+comment5.target=boolean\ makeBooking(java.util.Date,\ java.util.Date,\ Room)
+comment5.text=\r\n\ \ \ \ public\ String\ getDuration(){\r\n\ \ \ \ \ \ \ \ String\ strfrom\ \=\ SimpleDateFormat.format(this.from.getTime());\r\n\ \ \ \ \ \ \ \ String\ strto\ \=\ SimpleDateFormat.format(this.to.getTime());\r\n\ \ \ \ \ \ \ \ return\ strfrom\ +\ "-"\ +\ strto;\r\n\ \ \ \ \ \ \ //\ return\ SDFormat.format(this.from.getTime()\ +\ "-"\ +\ this.to.getTime());\r\n}
 comment6.params=
 comment6.target=java.lang.String\ getTime()
-numComments=7
+comment7.params=from\ to\ room
+comment7.target=boolean\ availability(java.util.Date,\ java.util.Date,\ Room)
+numComments=8
