@@ -5,13 +5,13 @@ import java.sql.*;
 
 public class JSleep
 {
-
+    /*
     public static Room createRoom(){
         Price price = new Price(100000, 5);
       //  Room room = new Room("hotel", 30, price, Facility.AC);
         Room room = new Room(1, "Alif", 2, price, Facility.AC, City.JAKARTA, "Rawamangun");
         return room;
-    }
+    }*/
     public static void main (String [] args)
     {
        /* // initialise instance variables
@@ -52,7 +52,7 @@ public class JSleep
         System.out.println(Validate.filter(unfilteredArray, 12000,true));
         System.out.println("Above 10000.0");
         System.out.println(Validate.filter(unfilteredArray, 10000,false));
-        */
+
         Room RoomA = JSleep.createRoom();
         Room RoomB = JSleep.createRoom();
         System.out.println("Membuat booking dari tanggal 15 hingga 18");
@@ -72,6 +72,7 @@ public class JSleep
         Date start = Date.valueOf("2022-8-20");
         Date end = Date.valueOf("2022-8-15");
         System.out.println(Payment.makeBooking(start, end,RoomA));*/
+        System.out.println("Hello from Intellij!");
 
     }
 
