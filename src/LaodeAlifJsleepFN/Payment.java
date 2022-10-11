@@ -14,7 +14,7 @@ public class Payment extends Invoice
     public Payment(int id, int buyerId, int renterId, int roomId, Date from, Date to)
     {
         super(id, buyerId, renterId);
-        this.id = id;
+      //  this.id = id;
         this.buyerId = buyerId;
         this.renterId = renterId;
         //this.time = time
@@ -31,7 +31,7 @@ public class Payment extends Invoice
     public Payment(int id, Account buyer, Renter renter, String time, int roomId, Date from, Date to)
     {
         super(id, buyer.id, renter.id);
-        this.id = id;
+        //this.id = id;
         this.buyerId = buyer.id;
         this.renterId = renter.id;
         /*

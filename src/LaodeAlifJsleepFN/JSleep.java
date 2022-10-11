@@ -2,6 +2,7 @@
 //NPM : 2106731213
 package laodeAlifJsleepFN;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class JSleep
 {
@@ -71,9 +72,21 @@ public class JSleep
         System.out.println("Membuat booking dari tanggal 20 hingga 15");
         Date start = Date.valueOf("2022-8-20");
         Date end = Date.valueOf("2022-8-15");
-        System.out.println(Payment.makeBooking(start, end,RoomA));*/
-        System.out.println("Hello from Intellij!");
+        System.out.println(Payment.makeBooking(start, end,RoomA));
+        System.out.println("Hello from Intellij!");*/
+        ArrayList<Room> RoomSerialized = new ArrayList<Room>();
 
+        for (int i = 0; i < 5; i++){
+            RoomSerialized.add(i, JSleep.createRoom());
+            System.out.println(RoomSerialized.get(i).toString());
+        }
+    }
+
+    public static Room createRoom(){
+        Price price = new Price(100000, 0.5);
+        Room room = new Room ("Hotel",30, price, Facility.AC, City.DEPOK, "Jalan Margonda Raya");
+        return room;
+    }
     }
 
     /*
@@ -111,7 +124,7 @@ public class JSleep
     }
     public static int getTotalPrice(int price, int numberOfNight){
         return ((price*numberOfNight) + ((int)getAdminFee(price * numberOfNight)));
-    }*/
+    }
 
-}
+}*/
 

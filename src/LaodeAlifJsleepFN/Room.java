@@ -1,5 +1,6 @@
 package laodeAlifJsleepFN;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
 /**
@@ -8,8 +9,7 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Room extends Serializable implements FileParser
-{
+public class Room extends laodeAlifJsleepFN.Serializable implements FileParser {
 
     public int size;
     public String name;
@@ -20,10 +20,10 @@ public class Room extends Serializable implements FileParser
     public String address;
     public ArrayList <Date> booked = new ArrayList <Date>();
 
-    /*
-     * Constructor for objects of class Room
 
-    public Room(String name, int size, Price price, Facility facility)
+    // * Constructor for objects of class Room
+
+    public Room(String name, int size, Price price, Facility facility, City city, String address)
     {
         this.name = name;
         this.size = size;
@@ -32,10 +32,10 @@ public class Room extends Serializable implements FileParser
 
     }
 
-    */
+
     public Room(int id, String name, int size, Price price, Facility facility, City city, String address){
-        super(id);
-        this.id = id;
+        //super(id);
+     //   this.id = id;
         this.name = name;
         this.size = size;
         this.price = price;
