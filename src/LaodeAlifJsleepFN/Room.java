@@ -29,7 +29,9 @@ public class Room extends laodeAlifJsleepFN.Serializable implements FileParser {
         this.size = size;
         this.price = price;
         this.facility = facility;
-
+        this.bedType = bedType.KING;
+        this.address = address;
+        this.city = city;
     }
 
 

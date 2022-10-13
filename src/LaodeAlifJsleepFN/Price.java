@@ -27,10 +27,10 @@ public class Price
         this.discount = discount;
         this.rebate = 0;
     }*/
-    public Price(double price, double rebate){
+    public Price(double price, double discount){
         this.price = price;
      //   this.rebate = discount;
-        this.discount = 0;
+        this.discount = discount;
     }
 
     public String toString(){
