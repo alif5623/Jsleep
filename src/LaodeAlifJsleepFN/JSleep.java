@@ -3,16 +3,41 @@
 package laodeAlifJsleepFN;
 import java.sql.*;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+import com.google.gson.*;
 
-public class JSleep
-{
+public class JSleep {
+    class Country {
+        public String name;
+        public int population;
+        public List<String> listOfStates;
+    }
+
+    public static void main(String[] args) {
+        String filepath = "C:\\Users\\alif5\\Documents\\Kuliah\\Semester 3\\OOP(Praktikum)\\Project\\JSleep\\src\\city.json";
+        Gson gson = new Gson();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filepath));
+            Country input = gson.fromJson(br, Country.class);
+            System.out.println("name: " + input.name);
+            System.out.println("population: " + input.population);
+            System.out.println("states: ");
+            input.listOfStates.forEach(state -> System.out.println(state));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
     /*
     public static Room createRoom(){
         Price price = new Price(100000, 5);
       //  Room room = new Room("hotel", 30, price, Facility.AC);
         Room room = new Room(1, "Alif", 2, price, Facility.AC, City.JAKARTA, "Rawamangun");
         return room;
-    }*/
+    }
     public static void main (String [] args)
     {
        /* // initialise instance variables
@@ -68,12 +93,12 @@ public class JSleep
         Date start3 = Date.valueOf("2022-8-18");
         Date end3 = Date.valueOf("2022-8-20");
         System.out.println(Payment.makeBooking(start3, end3,RoomB));
-        /*
+
         System.out.println("Membuat booking dari tanggal 20 hingga 15");
         Date start = Date.valueOf("2022-8-20");
         Date end = Date.valueOf("2022-8-15");
         System.out.println(Payment.makeBooking(start, end,RoomA));
-        System.out.println("Hello from Intellij!");*/
+        System.out.println("Hello from Intellij!");
         ArrayList<Room> RoomSerialized = new ArrayList<Room>();
 
         for (int i = 0; i < 5; i++){
@@ -88,7 +113,7 @@ public class JSleep
         return room;
     }
     }
-
+    */
     /*
     public static int getHotelId(){
         return 0;
