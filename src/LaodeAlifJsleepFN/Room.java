@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Room extends laodeAlifJsleepFN.Serializable implements FileParser {
+public class Room extends laodeAlifJsleepFN.Serializable{
 
     public int size;
     public String name;
@@ -19,10 +19,10 @@ public class Room extends laodeAlifJsleepFN.Serializable implements FileParser {
     public City city;
     public String address;
     public ArrayList <Date> booked = new ArrayList <Date>();
-
+    public int accountId;
 
     // * Constructor for objects of class Room
-
+    /*
     public Room(String name, int size, Price price, Facility facility, City city, String address)
     {
         this.name = name;
@@ -32,12 +32,13 @@ public class Room extends laodeAlifJsleepFN.Serializable implements FileParser {
         this.bedType = bedType.KING;
         this.address = address;
         this.city = city;
-    }
+    }*/
 
 
-    public Room(int id, String name, int size, Price price, Facility facility, City city, String address){
+    public Room(int accountId, String name, int size, Price price, Facility facility, City city, String address){
         //super(id);
      //   this.id = id;
+        this.accountId = accountId;
         this.name = name;
         this.size = size;
         this.price = price;
@@ -51,10 +52,11 @@ public class Room extends laodeAlifJsleepFN.Serializable implements FileParser {
         return "\nName: " + this.name + "\nSize: " + this.size + this.price +
                 "\nFacility: " + this.facility + "\nCity: " + this.city + "\nAddress: " + this.address;
     }
+    /*
     public Object write(){
         return null;
     }
     public Boolean read(String a){
         return true;
-    }
+    }*/
 }

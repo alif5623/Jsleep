@@ -11,7 +11,25 @@ public class Validate {
     public Validate() {
 
     }
-
+    public static ArrayList filter (Price[] list, int value, boolean less){
+        ArrayList filteredPrice = new ArrayList();
+        if(less == true) {
+            for (Price iterator : list) {
+                if(iterator.price <= value){
+                    filteredPrice.add(iterator.price);
+                }
+            }
+        }
+        else{
+            for (Price iterator : list) {
+                if(iterator.price > value){
+                    filteredPrice.add(iterator.price);
+                }
+            }
+        }
+        return filteredPrice;
+    }
+    /*
     public static ArrayList<Price> filter(Price[] list, int value, boolean less) {
         ArrayList<Price> ret = new ArrayList<Price>();
         ArrayList<Price> isLess = new ArrayList<Price>();
@@ -28,5 +46,5 @@ public class Validate {
             }
         }
         return ret;
-    }
+    }*/
 }

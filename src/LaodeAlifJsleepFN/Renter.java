@@ -1,5 +1,6 @@
 package laodeAlifJsleepFN;
 
+import java.util.regex.*;
 
 /**
  * Write a description of class Renter here.
@@ -9,10 +10,12 @@ package laodeAlifJsleepFN;
  */
 public class Renter extends Serializable
 {
-    public int phoneNumber = 0;
+    public String phoneNumber;
     public String address = "";
     public String username ;
-
+    public static final String REGEX_NAME = "^[A-Za-z0-9_]{4,20}$";
+    public static final String REGEX_PHONE = "[0-9]{9,12}";
+    /*
     public Renter(int id, String username)
     {
         //super(id);
@@ -37,6 +40,20 @@ public class Renter extends Serializable
         this.username = username;
         this.phoneNumber = phoneNumber;
         this.address = address;
+    }*/
+    public Renter(String username, String phoneNumber, String address){
+       this.username = username;
+       this.phoneNumber = phoneNumber;
+       this.address = address;
+    }
+    public boolean validate(){
+        Pattern patternPhone = Pattern.compile(REGEX_PHONE);
+        Matcher matcherPhone = patternPhone.matcher(phoneNumber);
+        boolean matchPhone = matcherPhone.find();
+        Pattern patternName = Pattern.compile(REGEX_NAME);
+        Matcher matcherName = patternName.matcher(username);
+        boolean matchName = matcherName.find();
+        return matchName && matchPhone;
     }
 
 }

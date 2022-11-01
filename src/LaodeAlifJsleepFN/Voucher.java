@@ -1,7 +1,7 @@
 package laodeAlifJsleepFN;
 
 
-public class Voucher extends Serializable implements FileParser
+public class Voucher extends Serializable
 {
     public Type type;
     public double cut;
