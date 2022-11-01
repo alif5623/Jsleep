@@ -29,8 +29,8 @@ public class JSleep {
             String filepath = "json/randomRoomList.json";
             //JsonTable<Room> tableRoom = new JsonTable<>(Room.class, filepath);
             JsonTable<laodeAlifJsleepFN.Room> tableRoom = new JsonTable<>(Room.class, filepath);
-            List<laodeAlifJsleepFN.Room> filterTableRoom = filterByCity(tableRoom, "medan", 0, 5);
-            filterTableRoom.forEach(room -> System.out.println(room.toString()));
+         //   List<laodeAlifJsleepFN.Room> filterTableRoom = filterByCity(tableRoom, "medan", 0, 5);
+            //filterTableRoom.forEach(room -> System.out.println(room.toString()));
            // List<Room> filterTableRoom = filterByCity(tableRoom, "medan", 0, 5);
             //filterTableRoom.forEach(room -> System.out.println(room.toString()));
         }
