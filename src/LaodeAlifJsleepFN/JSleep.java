@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 import LaodeAlifJsleepFN.Algorithm;
+import LaodeAlifJsleepFN.JsonTable;
 import com.google.gson.*;
 
 public class JSleep {
@@ -25,9 +26,11 @@ public class JSleep {
         System.out.println(testRegexFail.validate());
         try
         {
-            String filepath = "C:\\Users\\alif5\\Documents\\Kuliah\\Semester 3\\OOP(Praktikum)\\Project\\JSleep\\src\\LaodeAlifJsleepFN\\json\\randomRoomList.json";
+            String filepath = "json/randomRoomList.json";
             //JsonTable<Room> tableRoom = new JsonTable<>(Room.class, filepath);
-            
+            JsonTable<laodeAlifJsleepFN.Room> tableRoom = new JsonTable<>(Room.class, filepath);
+            List<laodeAlifJsleepFN.Room> filterTableRoom = filterByCity(tableRoom, "medan", 0, 5);
+            filterTableRoom.forEach(room -> System.out.println(room.toString()));
            // List<Room> filterTableRoom = filterByCity(tableRoom, "medan", 0, 5);
             //filterTableRoom.forEach(room -> System.out.println(room.toString()));
         }
