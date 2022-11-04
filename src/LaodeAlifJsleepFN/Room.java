@@ -1,6 +1,5 @@
-package laodeAlifJsleepFN;
+package LaodeAlifJsleepFN;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
 /**
@@ -9,7 +8,7 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Room extends laodeAlifJsleepFN.Serializable{
+public class Room extends Serializable {
 
     public int size;
     public String name;
@@ -49,7 +48,7 @@ public class Room extends laodeAlifJsleepFN.Serializable{
     }
 
     public String toString(){
-        return "\nName: " + this.name + "\nSize: " + this.size + this.price +
+        return "\nName: " + this.name + "\nbedType = " + this.bedType + "\nSize: " + this.size + this.price +
                 "\nFacility: " + this.facility + "\nCity: " + this.city + "\nAddress: " + this.address;
     }
     /*

@@ -1,6 +1,6 @@
 //Nama: Laode ALif Ma'sum Sidrajat Raja Ika
 //NPM : 2106731213
-package laodeAlifJsleepFN;
+package LaodeAlifJsleepFN;
 import java.sql.*;
 import java.util.ArrayList;
 import java.io.BufferedReader;
@@ -20,37 +20,60 @@ public class JSleep {
     }
 
     public static void main(String[] args) {
-        Renter testRegex = new Renter("Netlab_", "081234567890", "Jl Margonda Raya");
-        Renter testRegexFail = new Renter("netlab", "081", "Jalan");
+       // Renter testRegex = new Renter("Netlab_", "081234567890", "Jl Margonda Raya");
+       // Renter testRegexFail = new Renter("netlab", "081", "Jalan");
+        Account testRegex = new Account("Alif", "alif5623@yahoo.com", "Alif56234");
+        Account testRegexFail = new Account("Alif", "alif2_@yahoo.com","Alif56234");
         System.out.println(testRegex.validate());
         System.out.println(testRegexFail.validate());
-        try
-        {
-            String filepath = "json/randomRoomList.json";
-            //JsonTable<Room> tableRoom = new JsonTable<>(Room.class, filepath);
-            JsonTable<laodeAlifJsleepFN.Room> tableRoom = new JsonTable<>(Room.class, filepath);
-         //   List<laodeAlifJsleepFN.Room> filterTableRoom = filterByCity(tableRoom, "medan", 0, 5);
-            //filterTableRoom.forEach(room -> System.out.println(room.toString()));
-           // List<Room> filterTableRoom = filterByCity(tableRoom, "medan", 0, 5);
-            //filterTableRoom.forEach(room -> System.out.println(room.toString()));
-        }
-        catch(Throwable t)
-        {
+       /* try{
+            String filepath = "C:\\Users\\alif5\\Documents\\Kuliah\\Semester 3\\OOP(Praktikum)\\Project\\JSleep\\src\\LaodeAlifJsleepFN\\json\\account.json";
+            JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
+            tableAccount.add(new Account("name", "email", "password"));
+            tableAccount.writeJson();
+            System.out.println(tableAccount);
+        }catch(Throwable t){
             t.printStackTrace();
+        }*/
+        try {
+            String filePath = "C:\\Users\\alif5\\Documents\\Kuliah\\Semester 3\\OOP(Praktikum)\\Project\\JSleep\\src\\LaodeAlifJsleepFN\\json\\account.json";
+            JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filePath);
+            tableAccount.add(new Account("name", "email", "password"));
+            JsonTable.writeJson(tableAccount, filePath);
+            tableAccount.forEach(account -> System.out.println(account));
         }
+
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        for(int i = 0; i < 10; i++){
+            ThreadingObject thread = new ThreadingObject("Thread " + i);
+        }
+       /* try
+        {
+            String filepath = "C:\\Users\\alif5\\Documents\\Kuliah\\Semester 3\\OOP(Praktikum)\\Project\\JSleep\\src\\LaodeAlifJsleepFN\\json\\randomRoomList.json";
+            JsonTable<Room> tableRoom = new JsonTable<>(Room.class, filepath);
+       //     List<Room> filterTableRoom = filterByCity(tableRoom, "medan", 0, 5);
+            List<Room> filterTableRoom = filterByPrice(tableRoom, 100000, 250000);
+         //   List<Room> filterTableRoom = filterByAccountId(tableRoom, 1, 0, 5);
+            filterTableRoom.forEach(room -> System.out.println(room.toString()));
+        }
+        catch (Throwable t){
+            t.printStackTrace();
+        }*/
     }
-    /*
+
     public static List<Room> filterByCity(List<Room> list, String search, int page, int pageSize){
-        return Algorithm.<Room>paginate(list, page, pageSize, i->i.city==City.valueOf(search.toUpperCase()));
-    }*/
+        return Algorithm.<Room>paginate(list, page, pageSize, room->room.city.toString().toLowerCase().contains(search.toLowerCase()));
+    }
 
     public static List<Room> filterByPrice(List<Room> list, double minPrice, double maxPrice){
         return Algorithm.<Room>collect(list, i->i.price.price <= maxPrice && i.price.price >= minPrice);
     }
-    /*
+
     public static List<Room> filterByAccountId(List<Room> list, int accountId, int page, int pageSize){
-        return Algorithm.<Room>paginate(list, page, pageSize,i->i.accountId==accountId);
-    }*/
+        return Algorithm.<Room>paginate(list, page, pageSize,room -> room.accountId == accountId);
+    }
 
 
     public static Room createRoom() {

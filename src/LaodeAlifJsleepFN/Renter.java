@@ -1,4 +1,4 @@
-package laodeAlifJsleepFN;
+package LaodeAlifJsleepFN;
 
 import java.util.regex.*;
 
@@ -13,8 +13,8 @@ public class Renter extends Serializable
     public String phoneNumber;
     public String address = "";
     public String username ;
-    public static final String REGEX_NAME = "^[A-Za-z0-9_]{4,20}$";
-    public static final String REGEX_PHONE = "[0-9]{9,12}";
+    public static final String REGEX_NAME = "^[A-Z][A-Za-z0-9_]{4,20}$";
+    public static final String REGEX_PHONE = "^[0-9]{9,12}$";
     /*
     public Renter(int id, String username)
     {

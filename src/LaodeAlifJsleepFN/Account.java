@@ -1,16 +1,18 @@
-package laodeAlifJsleepFN;
+package LaodeAlifJsleepFN;
 
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Account extends Serializable
 {
     public String name;
     public String email;
     public String password;
-
-    public Account(int id, String name, String email, String password)
+    public static final String REGEX_EMAIL = "^[A-Za-z0-9]+@(.+)$";
+    public static final String REGEX_PASSWORD = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)*[a-zA-Z\\d]{8,}$";
+    public Account(String name, String email, String password)
     {
-        //super(id);
-       // this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
@@ -24,5 +26,15 @@ public class Account extends Serializable
     }
     public Boolean read(String a){
         return true;
+    }
+
+    public boolean validate(){
+        Pattern patternEmail = Pattern.compile(REGEX_EMAIL);
+        Matcher matcherEmail = patternEmail.matcher(email);
+        boolean matchEmail = matcherEmail.find();
+        Pattern patternPassword = Pattern.compile(REGEX_PASSWORD);
+        Matcher matcherPassword = patternPassword.matcher(password);
+        boolean matchPassword = matcherPassword.find();
+        return matchEmail && matchPassword;
     }
 }

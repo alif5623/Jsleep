@@ -1,4 +1,4 @@
-package laodeAlifJsleepFN;
+package LaodeAlifJsleepFN;
 
 
 public enum Type
