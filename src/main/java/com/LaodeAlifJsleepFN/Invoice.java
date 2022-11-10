@@ -14,15 +14,15 @@ public class Invoice extends Serializable
 {
     public int buyerId;
     public int renterId;
-   // public PaymentStatus status;
-    //public RoomRating rating;
-    /*
+    public PaymentStatus status;
+    public RoomRating rating;
+
     public enum RoomRating{
         NONE, BAD, NEUTRAL, GOOD
     }
     public enum PaymentStatus{
         FAILED, WAITING, SUCCESS
-    }*/
+    }
     protected Invoice(int buyerId, int renterId)
     {
         //super(id);

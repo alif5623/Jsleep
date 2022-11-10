@@ -58,6 +58,11 @@ public class PaymentController implements BasicGetController<Payment> {
     }
     @PostMapping("/{id}/accept")
     public boolean accept(@RequestParam int id){
+        Payment payment = Algorithm.<Payment>find(getJsonTable(), predicate -> id == id);
+       // Invoice invoice = Algorithm.<Invoice>find(getJsonTable(), predicate ->  id == id);
+        if(payment != null){
+          //  if()
+        }
         return false;
     }
     @PostMapping("/{id}/cancel")
