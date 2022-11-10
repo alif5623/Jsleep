@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class Room extends Serializable {
 
     public int size;
+    public int accountId;
     public String name;
     public Facility facility;
     public Price price;
@@ -18,7 +19,6 @@ public class Room extends Serializable {
     public City city;
     public String address;
     public ArrayList <Date> booked = new ArrayList <Date>();
-    public int accountId;
 
     // * Constructor for objects of class Room
     /*

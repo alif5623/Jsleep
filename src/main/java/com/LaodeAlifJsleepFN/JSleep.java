@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.List;
 import com.LaodeAlifJsleepFN.Algorithm;
 import com.LaodeAlifJsleepFN.JsonTable;
+import com.LaodeAlifJsleepFN.dbjson.JsonDBEngine;
 import com.google.gson.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,8 +22,10 @@ public class JSleep {
         public List<String> listOfStates;
     }
     public static void main(String[] args) {
+        JsonDBEngine.Run(JSleep.class);
         SpringApplication.run(JSleep.class, args);
-       // Renter testRegex = new Renter("Netlab_", "081234567890", "Jl Margonda Raya");
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
+        // Renter testRegex = new Renter("Netlab_", "081234567890", "Jl Margonda Raya");
        // Renter testRegexFail = new Renter("netlab", "081", "Jalan");
         /*Account testRegex = new Account("Alif", "alif5623@yahoo.com", "Alif56234");
         Account testRegexFail = new Account("Alif", "alif2_@yahoo.com","Alif56234");

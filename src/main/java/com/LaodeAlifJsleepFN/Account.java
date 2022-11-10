@@ -9,13 +9,16 @@ public class Account extends Serializable
     public String name;
     public String email;
     public String password;
+    public Renter renter;
     public static final String REGEX_EMAIL = "^[A-Za-z0-9]+@(.+)$";
     public static final String REGEX_PASSWORD = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)*[a-zA-Z\\d]{8,}$";
+    public double balance;
     public Account(String name, String email, String password)
     {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.balance = 0;
     }
 
     public String toString(){
