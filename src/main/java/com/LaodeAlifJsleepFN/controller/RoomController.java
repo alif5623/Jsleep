@@ -18,24 +18,27 @@ public class RoomController implements BasicGetController<Room>{
     @GetMapping("/{id}/renter")
     List<Room> getRoomByRenter(
             @PathVariable int id,
-            @RequestParam int page,
-            @RequestParam int pageSize
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int pageSize
     ){
-        return Algorithm.<Room>paginate(getJsonTable(), page, pageSize, predicate -> predicate.id == id);
+        return Algorithm.paginate(getJsonTable(), page, pageSize, predicate -> predicate.id == id);
     }
     @PostMapping("/create")
     public Room create(
             @RequestParam int accountId,
             @RequestParam String name,
             @RequestParam int size,
-            @RequestParam Price price,
+            @RequestParam int price,
             @RequestParam Facility facility,
             @RequestParam City city,
             @RequestParam String address
     ){
-        Room newRoom = new Room(accountId, name, size, price, facility, city, address);
-        roomTable.add(newRoom);
-        return newRoom;
+        if(Algorithm.<Account>exists(AccountController.accountTable, acc -> acc.id == accountId && acc.renter != null)){
+            Room newRoom = new Room(accountId, name, size, new Price(price), facility, city, address);
+            roomTable.add(newRoom);
+            return newRoom;
+        }
+        return null;
     }
 
 }

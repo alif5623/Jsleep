@@ -19,7 +19,7 @@ public class VoucherController implements BasicGetController<Voucher>{
     public JsonTable<Voucher> getJsonTable(){
         return voucherTable;
     }
-    @RequestMapping("{id}/isUsed")
+    @GetMapping("{id}/isUsed")
     boolean isUsed(@PathVariable int id){
         Voucher voucher = Algorithm.<Voucher>find(getJsonTable(), predicate -> predicate.id == id);
         return voucher.isUsed();
@@ -27,15 +27,15 @@ public class VoucherController implements BasicGetController<Voucher>{
     @GetMapping("{id}/canApply")
     boolean canApply(
             @PathVariable int id,
-            @RequestParam Price price
+            @RequestParam double price
     ){
         Voucher voucher = Algorithm.<Voucher>find(getJsonTable(), predicate -> predicate.id == id);
-        return voucher.canApply(price);
+        return voucher.canApply(new Price(price));
     }
     @GetMapping("/getAvailable")
     List<Voucher> getAvailble(
-            @RequestParam int page,
-            @RequestParam int pageSize
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "3") int pageSize
     ){
         List<Voucher> list = new ArrayList<Voucher>();
         for(Voucher i : getJsonTable()){
@@ -43,6 +43,6 @@ public class VoucherController implements BasicGetController<Voucher>{
                 list.add(i);
             }
         }
-        return Algorithm.<Voucher>paginate(list, page, pageSize, predicate -> true);
+        return Algorithm.<Voucher>paginate(list, page, pageSize, voucher -> !voucher.isUsed());
     }
 }

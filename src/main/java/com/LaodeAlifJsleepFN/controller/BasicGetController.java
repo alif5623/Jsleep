@@ -4,9 +4,10 @@ import com.LaodeAlifJsleepFN.Algorithm;
 import com.LaodeAlifJsleepFN.JsonTable;
 import com.LaodeAlifJsleepFN.Serializable;
 import org.springframework.web.bind.annotation.*;
-
+import com.LaodeAlifJsleepFN.*;
 import java.util.List;
 @RestController
+@RequestMapping()
 public interface BasicGetController <T extends Serializable>{
     public abstract JsonTable<T> getJsonTable();
 
@@ -16,12 +17,12 @@ public interface BasicGetController <T extends Serializable>{
             @RequestParam int page,
             @RequestParam int pageSize
     ){
-        return Algorithm.<T>paginate(getJsonTable(), page, pageSize, predicate -> true);
+        return Algorithm.paginate(getJsonTable(), page, pageSize, predicate -> true);
     }
-    /*
+
     @GetMapping("/{id}")
     public default T getById(@PathVariable int id){
-        T obj = (T) Algorithm.<T>find(getJsonTable(), predicate->predicate.id == id);
-        return obj;
-    }*/
+        Predicate<T> predicate = obj -> obj.id == id;
+        return Algorithm.find(getJsonTable(), predicate);
+    }
 }

@@ -16,18 +16,27 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class JSleep {
+    /*
     class Country {
         public String name;
         public int population;
         public List<String> listOfStates;
+    }*/
+    public static void main(String[] args) {
+        //createVoucher();
+        JsonDBEngine.Run(JSleep.class);
+        SpringApplication.run(JSleep.class, args);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
     }
+}
+    /*
     public static void main(String[] args) {
         JsonDBEngine.Run(JSleep.class);
         SpringApplication.run(JSleep.class, args);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
         // Renter testRegex = new Renter("Netlab_", "081234567890", "Jl Margonda Raya");
        // Renter testRegexFail = new Renter("netlab", "081", "Jalan");
-        /*Account testRegex = new Account("Alif", "alif5623@yahoo.com", "Alif56234");
+        Account testRegex = new Account("Alif", "alif5623@yahoo.com", "Alif56234");
         Account testRegexFail = new Account("Alif", "alif2_@yahoo.com","Alif56234");
         System.out.println(testRegex.validate());
         System.out.println(testRegexFail.validate());
@@ -65,9 +74,9 @@ public class JSleep {
         }
         catch (Throwable t){
             t.printStackTrace();
-        }*/
+        }
     }
-
+    /*
     public static List<Room> filterByCity(List<Room> list, String search, int page, int pageSize){
         return Algorithm.<Room>paginate(list, page, pageSize, room->room.city.toString().toLowerCase().contains(search.toLowerCase()));
     }
@@ -202,5 +211,5 @@ public class JSleep {
         return ((price*numberOfNight) + ((int)getAdminFee(price * numberOfNight)));
     }
 
-}*/
-
+}
+*/
