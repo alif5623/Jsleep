@@ -22,8 +22,8 @@ import java.util.regex.Pattern;
 @RequestMapping("/account")
 public class AccountController implements BasicGetController<Account>
 {
-   // @JsonAutowired(value = Account.class , filepath = "C:\\Users\\alif5\\Documents\\Kuliah\\Semester 3\\OOP(Praktikum)\\Project\\JSleep\\src\\main\\java\\com\\LaodeAlifJsleepFN\\json\\account.json")
-    @JsonAutowired(value = Account.class, filepath = "src/json/account.json")
+    @JsonAutowired(value = Account.class , filepath = "C:\\Users\\alif5\\Documents\\Kuliah\\Semester 3\\OOP(Praktikum)\\Project\\JSleep\\src\\main\\java\\com\\LaodeAlifJsleepFN\\json\\account.json")
+    //@JsonAutowired(value = Account.class, filepath = "src/json/account.json")
     public static JsonTable<Account> accountTable;
     public static final String REGEX_EMAIL = "^[a-zA-Z0-9]+@[a-zA-Z]+([.]?[a-zA-Z]+)*\\.[a-zA-Z]+(?!\\s)$";
     public static final String REGEX_PASSWORD = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[a-zA-Z\\d]{8,}(?!\\s)$";
@@ -83,7 +83,7 @@ public class AccountController implements BasicGetController<Account>
         return null;
     }
 
-    @PostMapping("/{id}/topup")
+    @PostMapping("/{id}/topUp")
     boolean topUp(
             @PathVariable int id,
             @RequestParam double balance
@@ -103,7 +103,6 @@ public class AccountController implements BasicGetController<Account>
         String generatedPassword = null;
         try
         {
-
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(password.getBytes());
             byte[] bytes = md.digest();
