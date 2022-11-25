@@ -41,4 +41,12 @@ public class RoomController implements BasicGetController<Room>{
         return null;
     }
 
+    @GetMapping("/getAllRoom")
+    List<Room> getAllRoom(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "12")int pageSize
+    ){
+        return Algorithm.paginate(getJsonTable(), page, pageSize, pred -> true);
+    }
+
 }
