@@ -68,7 +68,7 @@ public class PaymentController implements BasicGetController<Payment> {
         System.out.println("Duration : " + duration);
         double totalPrice = findroom.price.price * duration;
         System.out.println("Total Price: " + totalPrice);
-        if(Payment.availability(fromDate, toDate, findroom) && totalPrice <= account.balance ){
+        if(Payment.availability(fromDate, toDate, findroom) && totalPrice <= account.balance){
             Payment payment = new Payment(buyerId, renterId, roomId, fromDate, toDate);
             account.balance -= totalPrice;
             payment.status = Invoice.PaymentStatus.WAITING;

@@ -78,14 +78,19 @@ public class RoomController implements BasicGetController<Room>{
      * @param pageSize is the size of the page
      * @return list of all paginated registered room
      */
-    @GetMapping("/getAllRoom")
-    List<Room> getAllRoom(
+    @GetMapping("/getPaginatedRoom")
+    List<Room> getPaginatedRoom(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "12")int pageSize
     ){
         return Algorithm.paginate(getJsonTable(), page, pageSize, pred -> true);
     }
 
+    @GetMapping("/getAllRoom")
+    List<Room> getAllRoom(
+    ){
+        return Algorithm.collect(getJsonTable(), (Predicate<Room>) pred -> true);
+    }
     /**
      * Getter to search room
      * @param roomName is the room's name to be searched
@@ -102,7 +107,6 @@ public class RoomController implements BasicGetController<Room>{
     ){
         return Algorithm.paginate(getJsonTable(), page, pageSize, pred -> pred.name.contains(roomName)); //contains biar bisa partial search
     }
-
     /**
      * Get method to get paginated and filtered room
      * @param page is the page number
@@ -111,15 +115,43 @@ public class RoomController implements BasicGetController<Room>{
      * @param priceMax is the price maximum filter
      * @param city is  the city filter
      * @param bed is the bed filter
-     * @param minSize is the minimum size filter
-     * @param maxSize is the maximum size filter
+     * @param sizeMin is the minimum size filter
+     * @param sizeMax is the maximum size filter
      * @param facility is the list of facility filter
      * @return list of paginated and filtered room list, else null
      */
     @GetMapping("/getFilteredRoom")
     List<Room> getFilteredRoom(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "12") int pageSize,
+            @RequestParam(defaultValue = "7") int pageSize,
+            @RequestParam(required = false) City city,
+            @RequestParam double priceMin,
+            @RequestParam double priceMax,
+            @RequestParam int sizeMin,
+            @RequestParam int sizeMax,
+            @RequestParam(required = false) BedType bed,
+            @RequestParam(required = false) ArrayList<Facility> facility
+    ){
+        List<Room> filteredList = new ArrayList<>();
+        if(priceMax != 0 && sizeMax == 0 && sizeMin == 0 && city == null && bed == null && facility == null){
+            filteredList =  Algorithm.collect(getJsonTable(), (Predicate<Room>) pred -> pred.price.price <= priceMax && pred.price.price >= priceMin);
+        }else if(priceMax == 0 && priceMin == 0 && sizeMax == 0 && sizeMin == 0 && city != null && bed == null && facility == null){
+            filteredList =  Algorithm.collect(getJsonTable(), (Predicate<Room>) pred -> pred.city == city);
+        }else if(priceMax == 0 && priceMin == 0 && sizeMax != 0 && city != null && bed == null && facility == null){
+            filteredList = Algorithm.collect(getJsonTable(), (Predicate<Room>) pred -> pred.size <= sizeMax && pred.size >= priceMax);
+        }else if(priceMax == 0 && priceMin == 0 && sizeMax == 0 && sizeMin == 0 && city == null && bed != null && facility == null){
+            filteredList = Algorithm.collect(getJsonTable(), (Predicate<Room>) pred -> pred.bedType == bed);
+        }else if(priceMax == 0 && priceMin == 0 && sizeMax == 0 && sizeMin == 0 && city == null && bed == null && facility != null){
+            filteredList = Algorithm.collect(getJsonTable(), (Predicate<Room>) pred -> pred.facility.containsAll(facility));
+        }
+        return Algorithm.paginate(filteredList, page, pageSize, pred -> true);
+    }
+
+    /*
+    @GetMapping("/getFilteredRoom")
+    List<Room> getFilteredRoom(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "7") int pageSize,
             @RequestParam double priceMin,
             @RequestParam double priceMax,
             @RequestParam(required = false) City city,
@@ -128,26 +160,37 @@ public class RoomController implements BasicGetController<Room>{
             @RequestParam int maxSize,
             @RequestParam(required = false) ArrayList<Facility> facility
     ){
+
+
         List<Room> filteredRoom = null;
+
+        if(priceMax != 0 && city == null && bed == null & minSize == 0 && maxSize == 0 && facility == null)
+            return Algorithm.collect(getJsonTable(), (Predicate<Room>) pred -> (pred.price.price <= priceMax && pred.price.price >= priceMax));
+        else if(priceMin == 0 && priceMax == 0 && city != null && bed == null && minSize == 0 && maxSize == 0)
+            return Algorithm.collect(getJsonTable(), (Predicate<Room>) pred -> pred.city == city && facility == null);
+
+        return null;
+        /*
         try{
             List<Room> filteredPrice = null;
             if(priceMax != 0 && city == null && bed == null && minSize == 0 && maxSize == 0 && facility == null){
-                filteredRoom = Algorithm.<Room>collect(getJsonTable(), pred -> pred.price.price >= priceMin && pred.price.price <= priceMax);
+                filteredRoom = Algorithm.collect(getJsonTable(), (Predicate<Room>) pred -> pred.price.price >= priceMin && pred.price.price <= priceMax);
             }else if(priceMin == 0 && priceMax == 0 && city != null && bed == null && minSize == 0 && maxSize == 0){
-                filteredRoom = Algorithm.<Room>collect(getJsonTable(), pred -> pred.city == city && facility == null);
+                filteredRoom = Algorithm.collect(getJsonTable(), (Predicate<Room>) pred -> pred.city == city && facility == null);
             }else if(priceMin == 0 && priceMax == 0 && city == null && bed != null && minSize == 0 && maxSize == 0){
-                filteredRoom = Algorithm.<Room>collect(getJsonTable(), pred -> pred.bedType == bed);
+                filteredRoom = Algorithm.collect(getJsonTable(), (Predicate<Room>) pred -> pred.bedType == bed);
             }else if(priceMin == 0 && priceMax == 0 && city == null && bed == null && maxSize != 0 && facility == null){
-                filteredRoom = Algorithm.<Room>collect(getJsonTable(), pred -> pred.size >= minSize && pred.size <= maxSize);
+                filteredRoom = Algorithm.collect(getJsonTable(), (Predicate<Room>) pred -> pred.size >= minSize && pred.size <= maxSize);
             }else if(priceMin == 0 && priceMax == 0 && city == null && bed == null && minSize == 0 && maxSize == 0 && facility != null){
-                filteredRoom = Algorithm.<Room>collect(getJsonTable(), pred -> pred.facility.containsAll(facility));
+                filteredRoom = Algorithm.collect(getJsonTable(), (Predicate<Room>) pred -> pred.facility.containsAll(facility));
             }
             return  Algorithm.paginate(filteredRoom, page, pageSize, pred -> true);
         }catch (Exception e){
             e.printStackTrace();
             return null;
         }
-    }
+
+    }*/
 
 
 }
