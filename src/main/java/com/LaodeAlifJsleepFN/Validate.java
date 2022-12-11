@@ -2,6 +2,9 @@ package com.LaodeAlifJsleepFN;
 
 import java.util.ArrayList;
 
+/**
+ *
+ */
 public class Validate {
     // instance variables - replace the example below with your own
 

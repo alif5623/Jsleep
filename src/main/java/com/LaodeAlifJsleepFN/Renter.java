@@ -3,10 +3,9 @@ package com.LaodeAlifJsleepFN;
 import java.util.regex.*;
 
 /**
- * Write a description of class Renter here.
+ * Renter class object to store renter information
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Laode Alif Ma'sum
  */
 public class Renter extends Serializable
 {
@@ -15,37 +14,26 @@ public class Renter extends Serializable
     public String username ;
     public static final String REGEX_NAME = "^[A-Z][A-Za-z0-9_]{4,20}$";
     public static final String REGEX_PHONE = "^[0-9]{9,12}$";
-    /*
-    public Renter(int id, String username)
-    {
-        //super(id);
-       // this.id = id;
-        this.username = username;
-    }
-    public Renter(int id, String username, String address){
-       // super(id);
-       // this.id = id;
-        this.username = username;
-        this.address = address;
-    }
-    public Renter(int id, String username, int phoneNumber){
-       // super(id);
-      //  this.id = id;
-        this.username = username;
-        this.phoneNumber = phoneNumber;
-    }
-    public Renter(int id, String username, int phoneNumber, String address){
-      //  super(id);
-       // this.id = id;
-        this.username = username;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-    }*/
+
+    /**
+     * Constructor to assign parameter into instance variable
+     * @param username is renter's registered username
+     * @param phoneNumber is renter's registered phone number
+     * @param address is renter's registered address
+     */
     public Renter(String username, String phoneNumber, String address){
        this.username = username;
        this.phoneNumber = phoneNumber;
        this.address = address;
     }
+
+    /**
+     * Method to validate whether the username and phone number
+     * is according to the regular expression
+     *
+     * @return true if username and phone number according to
+     * regular expression, else false
+     */
     public boolean validate(){
         Pattern patternPhone = Pattern.compile(REGEX_PHONE);
         Matcher matcherPhone = patternPhone.matcher(phoneNumber);

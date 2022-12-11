@@ -1,7 +1,9 @@
 package com.LaodeAlifJsleepFN;
 import java.util.HashMap;
 
-
+/**
+ *
+ */
 public class Serializable implements Comparable<Serializable>
 {
     public final int id;

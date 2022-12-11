@@ -1,6 +1,8 @@
 package com.LaodeAlifJsleepFN;
 
-
+/**
+ * A class object to store complaints from buyer
+ */
 public class Complaint extends Serializable
 {
     public String desc;

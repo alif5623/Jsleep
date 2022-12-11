@@ -3,40 +3,34 @@ package com.LaodeAlifJsleepFN;
 import java.util.Date;
 import java.util.ArrayList;
 /**
- * Write a description of class Room here.
+ * Room object to store registered Room information
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Laode Alif Ma'sum
  */
 public class Room extends Serializable {
 
     public int size;
     public int accountId;
     public String name;
-    public Facility facility;
+    public ArrayList<Facility> facility;
     public Price price;
     public BedType bedType;
     public City city;
     public String address;
     public ArrayList <Date> booked = new ArrayList <Date>();
 
-    // * Constructor for objects of class Room
-    /*
-    public Room(String name, int size, Price price, Facility facility, City city, String address)
-    {
-        this.name = name;
-        this.size = size;
-        this.price = price;
-        this.facility = facility;
-        this.bedType = bedType.KING;
-        this.address = address;
-        this.city = city;
-    }*/
-
-
-    public Room(int accountId, String name, int size, Price price, Facility facility, City city, String address){
-        //super(id);
-     //   this.id = id;
+    /**
+     * Constructor to assign parameter into class's instance variable
+     * @param accountId is room owner's account id
+     * @param name is room's name
+     * @param size is room's size
+     * @param price is room's price
+     * @param facility is the list of room's facility
+     * @param city is room's city location
+     * @param address is room's address location
+     * @param typeBed is room's available bed type
+     */
+    public Room(int accountId, String name, int size, Price price, ArrayList<Facility> facility, City city, String address, BedType typeBed){
         this.accountId = accountId;
         this.name = name;
         this.size = size;
@@ -44,18 +38,16 @@ public class Room extends Serializable {
         this.facility = facility;
         this.city = city;
         this.address = address;
-        this.bedType = BedType.SINGLE;
+        this.bedType = typeBed;
     }
 
+    /**
+     * Method to turn Room object into String
+     * @return String format of Room
+     */
     public String toString(){
         return "\nName: " + this.name + "\nbedType = " + this.bedType + "\nSize: " + this.size + this.price +
                 "\nFacility: " + this.facility + "\nCity: " + this.city + "\nAddress: " + this.address;
     }
-    /*
-    public Object write(){
-        return null;
-    }
-    public Boolean read(String a){
-        return true;
-    }*/
+
 }

@@ -2,12 +2,12 @@ package com.LaodeAlifJsleepFN;
 
 
 /**
- * Enumeration class City - write a description of the enum class here
+ * Enumeration for the City category
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Laode Alif Ma'sum
  */
 public enum City
 {
-   SURABAYA, DEPOK, LAMPUNG, JAKARTA, BANDUNG, SEMARANG, MEDAN, BEAKSI, BALI
+   SURABAYA, DEPOK, LAMPUNG, JAKARTA, BANDUNG, SEMARANG, MEDAN, BEKASI, BALI
+
 }

@@ -1,6 +1,8 @@
 package com.LaodeAlifJsleepFN;
 
-
+/**
+ * Enumeration for Facility category
+ */
 
 public enum Facility
 {

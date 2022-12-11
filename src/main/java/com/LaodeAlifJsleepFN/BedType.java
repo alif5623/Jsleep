@@ -2,10 +2,8 @@ package com.LaodeAlifJsleepFN;
 
 
 /**
- * Enumeration class BedType - write a description of the enum class here
- *
- * @author (your name here)
- * @version (version number or date here)
+ * Enumeration for the Bed Type category
+ * @author Laode Alif Ma'sum
  */
 public enum BedType
 {
